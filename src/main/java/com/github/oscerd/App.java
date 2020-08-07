@@ -13,9 +13,9 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 public class App implements RequestHandler<String, Object> {
 	
     @Override
-    public String handleRequest(final String input, final Context context) {
+    public String handleRequest(final String event, final Context context) {
 		LambdaLogger logger = context.getLogger();
-        logger.log("Hello " + input);
-        return "Hello " + input;
+        logger.log("Event received: " + event);
+        return context.getAwsRequestId();
     }
 }
